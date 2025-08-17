@@ -1,183 +1,287 @@
-# Netcom Smart Lead Assistant
 
-**One-stop, hands-free lead processing for your team.**
+# Smart Lead Processing Assistant
 
----
+**Your automated helper that captures and organizes new business contacts from multiple sources - working 24/7 so you don't have to**
 
-### What This Automation Does (In Simple Terms)
+## What This Automation Does (In Simple Terms)
 
-- Collects new leads from different sources (like online forms, LinkedIn tools, and company systems)
-- Tidies up and organizes each lead’s details so they’re easy to work with
-- Sorts leads by role (like CEO, CFO, CMO) and handles each one the right way
-- Shares lead info with the right people and tools (like your contact lists, spreadsheets, and email)
-- Sends automatic notifications to your team so no one misses a hot lead
-- Uses smart assistants to help write emails and update documents
-- Keeps everything moving smoothly so your team can focus on building relationships, not data entry
-
----
+• **Captures new contacts** from various business networking tools automatically
+• **Organizes information** into a standard format regardless of where it came from  
+• **Routes contacts** to the right systems based on their job title and importance
+• **Sends notifications** when high-priority contacts need immediate attention
+• **Creates documents** automatically for important prospects using AI assistance
 
 ## Step-by-Step Breakdown
 
-### 1. Gather New Leads
-- **Step Name:** Collect Lead Details
-- **What happens:** The system scoops up new lead information from online forms, LinkedIn tools, or company systems.
-- **Real-world comparison:** Like a super-organized receptionist who checks every mailbox and inbox for new messages.
-- **Why it matters:** No lead slips through the cracks, no matter where it comes from.
-- **Dependencies:** Make sure your forms, LinkedIn tools, and company systems are set up and connected.
+### Step 1: Process Google Form Task
+**What happens:** When someone submits a test form, the system loads sample contact data for testing
+**Real-world comparison:** Like a receptionist pulling a practice file to train a new employee
+**Why it matters:** Allows you to test the entire process without using real customer data
+**Dependencies:** None - this is just for testing purposes
 
----
+### Step 2: Fetch Event from HubSpot
+**What happens:** Retrieves complete contact details when HubSpot sends a notification
+**Real-world comparison:** Like looking up a customer's full file when their name appears on your desk
+**Why it matters:** Ensures you have all the information needed to process the contact properly
+**Dependencies:** Contact must exist in HubSpot with basic information filled out
 
-### 2. Tidy Up Lead Information
-- **Step Name:** Organize and Clean Lead Data
-- **What happens:** The system standardizes and fills in missing details for each lead, making sure everything is neat and consistent.
-- **Real-world comparison:** Like a filing clerk who double-checks every form before it goes in the cabinet.
-- **Why it matters:** Clean data means fewer mistakes and easier follow-up.
-- **Dependencies:** Keep your source forms and tools up-to-date so the right info is collected.
+### Step 3: Normalize HubSpot Data
+**What happens:** Converts HubSpot contact information into a standard format
+**Real-world comparison:** Like a filing clerk transferring information from different forms onto a standard index card
+**Why it matters:** Makes it possible to handle contacts the same way regardless of source
+**Dependencies:** HubSpot contacts need standard fields populated (name, email, company)
 
----
+### Step 4: Normalize Waalaxy Data
+**What happens:** Converts LinkedIn contact information from Waalaxy into standard format
+**Real-world comparison:** Like transcribing business cards into your address book
+**Why it matters:** Allows LinkedIn connections to be processed alongside other contacts
+**Dependencies:** Waalaxy must be configured to send contact data when connections are made
 
-### 3. Decide What to Do Next (Branching by Lead Type)
-- **Step Name:** Sort and Route Leads
-- **What happens:** The system checks each lead’s role (like CEO, CFO, CMO) and decides the best way to handle them.
-- **Real-world comparison:** Like a receptionist who knows which manager should get which message.
-- **Why it matters:** VIPs get the attention they deserve, and every lead is handled the right way.
-- **Dependencies:** Make sure job titles and key details are accurate in your lead sources.
+### Step 5: Normalize Dripify Data
+**What happens:** Converts LinkedIn automation data from Dripify into standard format
+**Real-world comparison:** Like a secretary organizing notes from different meetings into one format
+**Why it matters:** Ensures LinkedIn outreach contacts are captured and processed consistently
+**Dependencies:** Dripify campaigns must include all required contact fields
 
----
+### Step 6: Normalize DataGardener Data
+**What happens:** Converts enriched contact data from DataGardener into standard format
+**Real-world comparison:** Like a research assistant organizing findings into a standard report
+**Why it matters:** Captures enhanced contact information for better follow-up
+**Dependencies:** DataGardener must have valid contact enrichment data
 
-### 4. Special Handling for VIPs
+### Step 7: Normalize Apollo Data
+**What happens:** Converts sales contact data from Apollo into standard format
+**Real-world comparison:** Like transferring leads from a trade show list into your contact system
+**Why it matters:** Ensures sales-sourced contacts are processed with the same care
+**Dependencies:** Apollo sequences must capture email actions (inquiry, trial request)
 
-#### Path A: CEO Leads
-- **Step Names:** 
-  - Flag CEO Lead
-  - Create Google Doc Summary
-  - Prepare Email Notification
+### Step 8: If CEO
+**What happens:** Identifies CEO contacts for special VIP treatment
+**Real-world comparison:** Like flagging mail from the company president for immediate attention
+**Why it matters:** Ensures your most important prospects get white-glove service
+**Dependencies:** Job title field must be accurately populated in source system
 
-#### Path B: CFO Leads
-- **Step Names:** 
-  - Flag CFO Lead
-  - Prepare Email Notification
+### Step 9: If CFO
+**What happens:** Identifies CFO contacts for priority financial discussions
+**Real-world comparison:** Like routing financial inquiries directly to your accounting team
+**Why it matters:** Financial decision-makers often have urgent needs and buying power
+**Dependencies:** Job title must clearly indicate CFO or equivalent role
 
-#### Path C: CMO Leads
-- **Step Names:** 
-  - Flag CMO Lead
-  - Add to Contact Lists
-  - Prepare Email Notification
+### Step 10: If CMO
+**What happens:** Identifies CMO contacts for marketing-focused follow-up
+**Real-world comparison:** Like directing marketing materials to the right department head
+**Why it matters:** Marketing executives need different information than other contacts
+**Dependencies:** Job title must indicate marketing leadership role
 
-#### Path D: Other Leads (e.g., Premium, Inquiry, Trial, Replied)
-- **Step Names:** 
-  - Check for Premium or Special Status
-  - Prepare Email Notification
-  - Add to Contact Lists
-  - Create Service Ticket if Needed
+### Step 11: Waalaxy Email Replied
+**What happens:** Flags contacts who replied to LinkedIn messages for immediate action
+**Real-world comparison:** Like a receptionist running to tell you an important client is on the phone
+**Why it matters:** Quick response to engaged prospects dramatically improves conversion
+**Dependencies:** Waalaxy must track message reply status accurately
 
-**How different paths serve business needs:**  
-Each path ensures the right people are notified, the right records are updated, and VIPs or urgent leads get special attention—just like a personal assistant who knows when to escalate a message or just file it away.
+### Step 12: Dripify Premium Lead
+**What happens:** Identifies premium LinkedIn members who showed interest
+**Real-world comparison:** Like noting when a VIP customer walks into your store
+**Why it matters:** Premium members are often serious business professionals worth prioritizing
+**Dependencies:** Dripify must identify LinkedIn premium status
 
----
+### Step 13: DataGardener Email
+**What happens:** Routes contacts with verified email addresses to appropriate systems
+**Real-world comparison:** Like sorting mail into boxes based on having a return address
+**Why it matters:** Contacts with email can be reached directly for follow-up
+**Dependencies:** DataGardener must successfully find and verify email addresses
 
-### 5. Update Contact Lists Everywhere
-- **Step Name:** Add Lead to Company Address Books
-- **What happens:** The system adds or updates the lead in all your main contact lists and tools (like spreadsheets, contact books, and sales platforms).
-- **Real-world comparison:** Like a diligent admin who updates every address book, spreadsheet, and Rolodex at once.
-- **Why it matters:** Everyone always has the latest contact info, no matter which tool they use.
-- **Dependencies:** Keep your contact tools (like Airtable, HubSpot, Apollo) connected and organized.
+### Step 14: Apollo Inquiry Lead
+**What happens:** Handles contacts who submitted inquiries through Apollo campaigns
+**Real-world comparison:** Like flagging customers who asked to speak with a manager
+**Why it matters:** Direct inquiries indicate high interest and should be handled quickly
+**Dependencies:** Apollo campaigns must track inquiry responses
 
----
+### Step 15: Apollo Trial Lead
+**What happens:** Processes contacts who requested a product trial
+**Real-world comparison:** Like a car dealer preparing for a test drive appointment
+**Why it matters:** Trial requests are the strongest buying signals and need immediate attention
+**Dependencies:** Apollo must capture trial request actions from email campaigns
 
-### 6. Notify the Right People
-- **Step Name:** Send Alerts and Updates
-- **What happens:** The system sends out emails, chat messages, or creates tickets so the right team members know about new leads.
-- **Real-world comparison:** Like a personal assistant who sends a memo or a text to the right person at just the right time.
-- **Why it matters:** No one misses a hot lead or urgent follow-up.
-- **Dependencies:** Make sure team email addresses and chat channels are up-to-date.
+### Step 16: Create HubSpot Contact
+**What happens:** Prepares contact information in the format HubSpot requires
+**Real-world comparison:** Like filling out a customer information card for filing
+**Why it matters:** Ensures all contacts are properly tracked in your main customer system
+**Dependencies:** HubSpot must have required fields configured
 
----
+### Step 17: Create Airtable Contact
+**What happens:** Formats contact data for your spreadsheet-style tracking system
+**Real-world comparison:** Like entering a new row in your customer ledger
+**Why it matters:** Provides a backup system and easy reporting access
+**Dependencies:** Airtable base must have matching column names
 
-### 7. Use Smart Assistants for Content
-- **Step Name:** Draft Emails and Documents Automatically
-- **What happens:** The system uses smart assistants to help write emails or summaries, and updates shared documents.
-- **Real-world comparison:** Like having a friendly copywriter on call who drafts messages and updates reports for you.
-- **Why it matters:** Saves time and ensures professional, consistent communication.
-- **Dependencies:** Keep your templates and document folders organized.
+### Step 18: Create Apollo Contact
+**What happens:** Prepares contact for addition to Apollo sales sequences
+**Real-world comparison:** Like adding a prospect to your sales call list
+**Why it matters:** Enables automated follow-up campaigns
+**Dependencies:** Apollo account must have available contact slots
 
----
+### Step 19: Write Contact to HubSpot
+**What happens:** Actually saves the contact in HubSpot's system
+**Real-world comparison:** Like filing the completed customer card in your filing cabinet
+**Why it matters:** Makes the contact available for all HubSpot features and reporting
+**Dependencies:** HubSpot connection must have write permissions
 
-### 8. Keep Everything in Sync
-- **Step Name:** Confirm and Log Actions
-- **What happens:** The system checks that each action is complete and logs updates for future reference.
-- **Real-world comparison:** Like a checklist that’s ticked off as each task is done, so nothing gets missed.
-- **Why it matters:** Ensures reliability and makes it easy to track what’s happened.
-- **Dependencies:** Maintain access to logs and notifications for your team.
+### Step 20: Write Contact to Airtable
+**What happens:** Adds the contact as a new row in your Airtable
+**Real-world comparison:** Like writing a new entry in your customer log book
+**Why it matters:** Creates a searchable, sortable record outside your main system
+**Dependencies:** Airtable base must be shared with proper permissions
 
----
+### Step 21: Write Contact to Apollo
+**What happens:** Creates the contact in Apollo for sales outreach
+**Real-world comparison:** Like adding someone to your phone's contact list
+**Why it matters:** Enables automated sales sequences and tracking
+**Dependencies:** Apollo API access must be active with sufficient credits
 
-## Decision Points (Branching Logic)
+### Step 22: Write Apollo Contact to Sequence
+**What happens:** Enrolls specific contacts in automated follow-up campaigns
+**Real-world comparison:** Like signing someone up for your newsletter
+**Why it matters:** Ensures consistent follow-up without manual effort
+**Dependencies:** Apollo sequence must be created and active
 
-- **Decision:** What type of lead is this (CEO, CFO, CMO, premium, inquiry, trial, replied, or other)?
-- **Path A (CEO):**  
-  - Flag CEO Lead  
-  - Create Google Doc Summary  
-  - Prepare Email Notification  
-- **Path B (CFO):**  
-  - Flag CFO Lead  
-  - Prepare Email Notification  
-- **Path C (CMO):**  
-  - Flag CMO Lead  
-  - Add to Contact Lists  
-  - Prepare Email Notification  
-- **Path D (Premium, Inquiry, Trial, Replied, Other):**  
-  - Check for Premium or Special Status  
-  - Prepare Email Notification  
-  - Add to Contact Lists  
-  - Create Service Ticket if Needed  
+### Step 23: ChatGPT
+**What happens:** Generates personalized email content for trial requests
+**Real-world comparison:** Like having a copywriter draft a custom letter
+**Why it matters:** Provides professional, personalized communication at scale
+**Dependencies:** Email template context must be properly configured
 
-**How this helps:**  
-Each path ensures leads are handled with the right level of care. VIPs get extra attention, urgent leads are escalated, and routine leads are processed efficiently—freeing your team to focus on building relationships, not chasing paperwork.
+### Step 24: ChatGPT Doc
+**What happens:** Creates longer-form content for VIP prospects
+**Real-world comparison:** Like having an assistant prepare a detailed proposal
+**Why it matters:** Important prospects deserve customized, thoughtful materials
+**Dependencies:** Document templates and context must be set up
 
----
+### Step 25: Message to Google Doc
+**What happens:** Saves generated content to a shared document
+**Real-world comparison:** Like typing up meeting notes and filing them
+**Why it matters:** Creates a permanent record that teams can review and edit
+**Dependencies:** Google Doc must be created and shared with proper permissions
 
-## Impact Section
+### Step 26: Message to Email
+**What happens:** Sends notification emails to your team
+**Real-world comparison:** Like leaving a note on someone's desk about an important call
+**Why it matters:** Ensures human team members know when their attention is needed
+**Dependencies:** Email addresses must be valid and monitored
 
-### What Makes This Special
+### Step 27: Message to Slack
+**What happens:** Posts updates to your team chat channel
+**Real-world comparison:** Like making an announcement in the break room
+**Why it matters:** Provides real-time visibility of important activities
+**Dependencies:** Slack channel must exist and team must have access
 
-- **Speed:** Leads are processed and shared instantly—no more waiting for manual updates.
-- **Accuracy:** No more typos or missed details; everything is double-checked and consistent.
-- **Consistency:** Every lead gets the same high-quality treatment, every time.
-- **Cost Benefits:** Reduces repetitive admin work, so your team can focus on high-value tasks.
+### Step 28: Message to ServiceNow
+**What happens:** Creates support tickets for issues requiring follow-up
+**Real-world comparison:** Like filling out a work order for maintenance
+**Why it matters:** Ensures nothing falls through the cracks
+**Dependencies:** ServiceNow must have proper ticket categories configured
 
----
+### Step 29: Service Now Information
+**What happens:** Processes incoming ServiceNow requests
+**Real-world comparison:** Like checking your inbox for new work assignments
+**Why it matters:** Allows the system to respond to internal team requests
+**Dependencies:** ServiceNow must be configured to send webhook notifications
 
-### Before vs After
+### Step 30: Netcom Urgency 1
+**What happens:** Handles high-priority ServiceNow tickets immediately
+**Real-world comparison:** Like a fire alarm that requires immediate response
+**Why it matters:** Critical issues get addressed without delay
+**Dependencies:** ServiceNow urgency levels must be properly set
 
-| Before (Manual)                  | After (Automated)                       |
-|----------------------------------|-----------------------------------------|
-| Leads scattered across inboxes   | All leads gathered in one place         |
-| Manual data entry (slow, error-prone) | Details tidied up automatically    |
-| Team misses urgent leads         | Instant alerts for VIPs and hot leads   |
-| Repetitive admin work            | Team focuses on building relationships  |
-| Inconsistent follow-up           | Every lead gets the right attention     |
+### Step 31: Netcom Urgency 2
+**What happens:** Routes standard priority tickets for normal processing
+**Real-world comparison:** Like regular mail that can be handled during business hours
+**Why it matters:** Balances quick response with efficient resource use
+**Dependencies:** ServiceNow ticket priorities must be consistently applied
 
----
+### Step 32: ComposeDoc Task
+**What happens:** Handles requests to create new documents
+**Real-world comparison:** Like asking an assistant to draft a letter
+**Why it matters:** Automates document creation based on team requests
+**Dependencies:** ServiceNow must include clear document requirements
 
-### Who Benefits
+### Step 33: End If Nothing To Do
+**What happens:** Gracefully closes tasks that don't require any action
+**Real-world comparison:** Like filing a "no action needed" report
+**Why it matters:** Prevents system resources from being wasted
+**Dependencies:** None - this is a cleanup step
 
-- **Sales Teams:** Never miss a lead, always have up-to-date info, and spend more time selling.
-- **Marketing Teams:** See which campaigns bring in the best leads, without manual tracking.
-- **Managers:** Get clear reports and peace of mind that nothing is slipping through the cracks.
-- **Support Staff:** Less time on repetitive tasks, more time on meaningful work.
-- **Business Analysts:** Reliable data for better insights and decisions.
+## Decision Points
 
----
+### Path A: VIP Contact Processing (CEO/CFO/CMO)
+When the system identifies an executive-level contact, it follows a special high-priority path:
+- If CEO
+- ChatGPT Doc
+- Message to Google Doc
+- Message to Email
+- Message to ServiceNow
 
-## Conclusion
+### Path B: Engaged Contact Processing
+When contacts show high engagement (replies, inquiries, trial requests), they get immediate attention:
+- Waalaxy Email Replied
+- Apollo Inquiry Lead
+- Apollo Trial Lead
+- ChatGPT
+- Message to Email
+- Message to ServiceNow
 
-**Bottom Line:**  
-This smart lead assistant acts like your team’s most reliable admin, personal assistant, and filing clerk—all rolled into one. It doesn’t replace people; it frees them up to do what humans do best: connect, build relationships, and grow the business. Let the system handle the busywork, so your team can focus on what really matters.
+### Path C: Standard Contact Processing
+Regular contacts are efficiently processed and stored for future outreach:
+- Create HubSpot Contact
+- Create Airtable Contact
+- Create Apollo Contact
+- Write Contact to HubSpot
+- Write Contact to Airtable
+- Write Contact to Apollo
+- Message to Slack
 
----
+## What Makes This Special
+
+**Speed:** Processes new contacts in seconds instead of hours of manual data entry
+
+**Accuracy:** Eliminates typos and missing information that happen with manual processing
+
+**Consistency:** Every contact is handled the same way, every time, following your best practices
+
+**Cost Savings:** One automated assistant doing the work of multiple data entry specialists
+
+## Before vs After
+
+**Before:**
+- Sales reps spending 2-3 hours daily on data entry
+- Contacts from different sources handled inconsistently  
+- 24-48 hour delay before new leads get attention
+- Important contacts sometimes missed in the shuffle
+- Manual copying between multiple systems
+
+**After:**
+- Sales reps focus on building relationships
+- All contacts processed identically regardless of source
+- New leads processed within minutes, 24/7
+- VIP contacts automatically flagged and prioritized
+- Information flows seamlessly between all your systems
+
+## Who Benefits
+
+**Sales Teams:** Spend time selling instead of data entry, never miss a hot lead
+
+**Marketing Teams:** See all lead sources in one place, measure what's working
+
+**Executives:** Get instant alerts about VIP prospects, see real-time pipeline growth
+
+**Operations Teams:** Reduce errors, ensure compliance, scale without adding headcount
+
+**Customers:** Receive faster responses and more personalized attention
+
+## Bottom Line
+
+This automation acts like a tireless assistant who never takes a break, never makes mistakes, and ensures every potential customer gets the attention they deserve. It's not about replacing people - it's about freeing them to do what humans do best: build relationships, solve problems, and grow the business.
 
 ## Support
 
-Need help or want to learn more?  
-Contact your automation support team or reach out to your workflow administrator for assistance.
+If you need help with this automation, reach out to your automation team or visit the community support channel at alomasupport.slack.com.
