@@ -22,4 +22,4 @@ flowchart TD
     N -->|"No"| P[Add to Nurture Campaign]
     
     L --> Q[Send Welcome Message]
-    M --> R[Send Reactivation
+    M --> R[Send Reactivation]
